@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class CicloDiaNoite : MonoBehaviour
 {
-    public Renderer rend; // O componente Renderer do objeto com o material.
+    public Renderer rend; 
     public Material diaMaterial;
     public Material noiteMaterial;
-    public float duracaoNoite = 15.0f; // Duração da noite (15 segundos).
-    public float duracaoDia = 18.3f;   // Duração do dia (18.3 segundos).
+    public float duracaoNoite = 15.0f; 
+    public float duracaoDia = 18.3f;   
 
     private float tempoDecorrido = 0.0f;
     private bool eNoite = true;
 
     private void Start()
     {
-        // Inicialmente, definimos o material da noite.
+        
         rend.material = noiteMaterial;
     }
 
@@ -25,21 +25,21 @@ public class CicloDiaNoite : MonoBehaviour
         {
             eNoite = false;
             tempoDecorrido = 0.0f;
-            rend.material = diaMaterial; // Transição para o dia.
+            rend.material = diaMaterial; 
         }
 
         if (!eNoite && tempoDecorrido >= duracaoDia)
         {
             eNoite = true;
             tempoDecorrido = 0.0f;
-            rend.material = noiteMaterial; // Transição para a noite.
+            rend.material = noiteMaterial; 
         }
 
-        // Verifica se o ciclo de dia e noite deve reiniciar.
+       
         if (tempoDecorrido >= (eNoite ? duracaoNoite : duracaoDia))
         {
             tempoDecorrido = 0.0f;
-            eNoite = !eNoite; // Alterna entre dia e noite.
+            eNoite = !eNoite; 
             rend.material = eNoite ? noiteMaterial : diaMaterial;
         }
     }
